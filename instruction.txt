@@ -1,0 +1,235 @@
+	Дана інструкція написана Карпенко Вячеславом keyhit 
+як шпаргалка по роботі з системою контролю версій 
+GIT 
+
+	Для роботи використовується ОС Ubunty 16.04.LTS
+Введення команд здійснюю в стандартний термінал. 
+Так як убунту бажана система для розробки я навчаюсь 
+працювати з нею. Тут будуть речі для когось очевидні
+але для мене вони нові. Можливо є новачки такі як я 
+і ця інструкція знадобиться ще комусь. 
+
+Примітки:
+
+зміна каталогу
+
+cd/home/someUser/someDirectory
+
+або
+
+~/someDirectory
+
+~ -це значок що означає шлях  /home/someUser 
+
+
+______GIT-встановлення та налаштування________
+
+-Встановлюємо
+
+sudo apt-get install git
+
+-користувача keyhit
+
+  git config --global user.name "keyhit" 
+
+-адреса електронної пошти
+
+ git config --global user.email viacheslavkarpenkoju@gmail.com
+
+ - генероуємо ключ для SSH з!єднання з сервером
+ 
+ ssh-keygen
+
+ -отримуємо
+	Generating public/private rsa key pair.
+	Enter file in which to save the key (/home/someUser/.ssh/id_rsa):
+	
+	-натискаємо ентер
+
+	Enter passphrase (empty for no passphrase): 
+
+	-вводимо фразу для пароля ЗАПАМ!ЯТОВУЄМО ЇЇ!!!!!
+
+	Enter same passphrase again: 
+
+	-вводимо повторно фразу для пароля 
+
+	-отримуємо
+
+	Your identification has been saved in /home/someUser/.ssh/id_rsa.
+	Your public key has been saved in /home/someUser/.ssh/id_rsa.pub.
+	The key fingerprint is:
+	SHA256:GxuM3ddfgdfg8wPwgfHk4pTo8wxRSm/X9qwqwqwqmkNlvc /someUserr@someHost
+	The key's randomart image is:
+	+---[RSA 2048]----+
+	|          ..     |
+	|        ...      |
+	|        qo.    ..|
+	|     + o..== ...+|
+	|     . S ==.B ==+|
+	|       o %.O B+Bo|
+	|     O ==+d.B.= E|
+	|         . o.+ ..|
+	|              .oo|
+	+----[SHA256]-----+
+
+-ключ зберігся у файлі /home/someUser/.ssh/id_rsa
+
+- Отримуємо ключ з файлу
+
+	cat ~/.ssh/id_rsa.pub 
+
+- Ключ виглядає так
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMthmWQFJ0TODdhKj21Kot0ed0byQMezYIuYHoKoA4LMGTlr321MrG73tWidalcDhrcYyIcmKp84RsiVjw6opwUfIqRXfctsdfsdfsuZj0Y7sM8hSBR2xcvxcvxcvu0296/Lgd59uGc8yclNGVCTHxu9SsWzLrFVBdoXlJkixjDRzGMbw0hgocCuMWBbTvN92ai+iB6gkH03Yux07liwWazOOGERnfPog1T0lwg9isSmDxcvxcvxvQcW+dRmuYF6ZBl4Sx3LNGzI61WxBweHIf1rJyUnNmZE+NUzW+WWoMhiB4xjs/nIfPq1Mmv/ someUser@someHost
+
+- Копіюємо його та заходим на https://github.com/settings/keys
+-Натискаємо New ssh key -> вводимо заголовок в поле Title -> вставляємо ключ в поле Key -> Add SSH key
+-підтверджуємо дії паролем
+
+
+_______РЕПОЗИТОРІЇ - створення___________
+
+-Сервер github.com//keyhit - наша директорія на гіті 
+				-Створюємо репозиторій з назвою myrepo
+				-В Description (optional) можна нічого не вказувати 
+					але я вказав Study git
+				- Initialize this repository with a README - помічаємо
+				- Create repository
+				-заходимо в репозиторію і натискаємо Сlone or download
+				 та копіюємо посилання git@github.com:keyhit/myrepo.git
+
+-Термінал 
+				-Переходимо в папку де буде зберігатися наша копія
+
+				git clone git@github.com:keyhit/myrepo.git
+
+				-отримуємо "виконано." і заходимо в створений каталог копії 
+					репозиторії з гіта.
+
+				- дізнаємося про зміни в локальні репозиторії
+
+				git ststus 
+
+				- отримуємо Ваша гілка оновлена у відповідности з «origin/master».
+
+
+________ЗМІНИ В ЛОКАЛЬНІ РЕПОЗИТОРІЇ ГІЛКИ Master_________
+
+-Термінал 
+				- створюємо файл t1.txt
+
+				git ststus 
+
+				- показані зміни у гілці Master локального репозиторію 
+					файл t1.txt є не відслідковується(Untracked files)(не отслеживаємый)
+
+				-робимо файл t1.txt відслідковується
+
+				git add t1.txt
+
+				-нам покаже шо файл відслідковується
+
+				-вносимо будь-які зміни до t1.txt і залишаємо останій рядок порожнім 
+				
+				git status 
+
+				-покаже що файл  t1.txt змінювався
+
+				-дивимося конкретні зміни у файлі
+
+				git diff
+
+				- відслідковуємо зміни в файлі t1.txt
+
+				git add t1.txt
+
+				-зміни файлу t1.txt тепер відслідковуються
+
+									__варіація_
+
+									- відслідковуємо зміни у всіх файлах
+
+										git add -A
+
+									-зміни усіх файлів тепер відслідковуються
+
+									__закінчення варіації_
+
+				-переглянемо те що відслідковуємо
+
+				git diff --staged
+
+				-фіксуємо зміни у гілці Master у репозиторії гіта
+
+				 push origin master
+
+				-на сервері гіта з!явився файл t1.txt із внесеними до нього змінами
+
+
+________ЗМІНИ НА СЕРВЕРІ РЕПОЗИТОРІЇ ГІЛКИ Master_________
+
+-Сервер 
+				-Змінюємо файл t1.txt  на сервері гіта
+-Термінал
+				-Звіряємо гілку Master на сервері гіта і на локальні машині
+
+				git remote show origin
+
+				-покаже застарілість 
+
+				-завантажуємо зміни з гілки Master  сервера
+
+				- git pull
+
+				-виведуться зміни у файлах гілки Master на локальні машині. 
+					Дані гілок оновлені
+
+
+_______ГІЛКИ ТА РОЗГАЛУДЖЕННЯ______________________
+
+-Термінал
+					-Створюємо гілку з назвою testing
+
+					git branch testing
+
+					-Виведення назв всіх гілок 
+
+					git branch 
+
+					-покаже гілки Master та testing з міткою на Master
+
+					-переходимо на гілку testing
+
+					git checkout testing
+
+					-перейшли в testing
+
+					git branch 
+
+					-покаже гілки Master та testing з міткою на testing
+
+					-створюємо файл t2.txt вносимо зміни
+					-комітимо зміни
+
+					-відсилаємо зміни на сервер
+
+					git push --set-upstream origin testing
+
+-Сервер  
+					-На сервері з!являється гілка testing	з нашими файлами				
+
+-Термінал
+					-оновлюємо дані про гілку testing та переходимо на гілку Master
+					git merge testing
+
+					-видаляємо гілку testing 
+					git branch -D testing
+
+					-об!єднуємо гілки локально 	
+
+					git merge origin/testing
+
+					-синхронізуємо дані сервера з локальними
+
+					git push --set-upstream origin testing
