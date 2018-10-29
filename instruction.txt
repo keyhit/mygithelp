@@ -1,4 +1,4 @@
-	Дана інструкція написана Карпенко Вячеславом keyhit 
+-	Дана інструкція написана Карпенко Вячеславом keyhit 
 як шпаргалка по роботі з системою контролю версій 
 GIT 
 
@@ -73,6 +73,8 @@ sudo apt-get install git
 	|              .oo|
 	+----[SHA256]-----+
 
+ ssh-add
+
 -ключ зберігся у файлі /home/someUser/.ssh/id_rsa
 
 - Отримуємо ключ з файлу
@@ -111,7 +113,13 @@ _______РЕПОЗИТОРІЇ - створення___________
 
 				git ststus 
 
-				- отримуємо Ваша гілка оновлена у відповідности з «origin/master».
+				- отримуємо Ваша гілка оновлена у відповідности з «origin/master»
+
+				git remote -v
+				-звіряємо віддалену версію і локальну.
+
+				echo "file.txt">.gitignore
+				-додавання файлів у гітігнор.
 
 
 ________ЗМІНИ В ЛОКАЛЬНІ РЕПОЗИТОРІЇ ГІЛКИ Master_________
@@ -233,3 +241,14 @@ _______ГІЛКИ ТА РОЗГАЛУДЖЕННЯ______________________
 					-синхронізуємо дані сервера з локальними
 
 					git push --set-upstream origin testing
+
+How to save username and password in git?
+
+					git config credential.helper store
+then
+ git pull
+					provide user-name and password and those details will be remembered later. The credentials are stored in the disk, with the disk permissions.
+
+					if you want to change password later
+
+git pull -u 

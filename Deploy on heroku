@@ -1,0 +1,19 @@
+Deploy on heroku
+_____УВАГА!!!!___________
+ВИКОРИСТОВУВАТИ ТІЛЬКИ ПОСТГРЕ 
+
+_____WEB______________
+1. Зайшов на хір
+2. Створив новий проект myphones
+_____CLI_______________
+2. Авторизуємось на хіроку з СLI
+    heroku login
+3. З!єднуємо репозиторій з існуючим хір проектом
+  heroku git:remote -a myphones
+4. git add -A
+5  git commit -m "Commit name"
+6  git push heroku master
+7  
+8  heroku run rake db:migrate
+9  heroku run rake db:seed
+10 heroku log --tail
