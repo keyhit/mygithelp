@@ -9,11 +9,16 @@ GIT
 але для мене вони нові. Можливо є новачки такі як я 
 і ця інструкція знадобиться ще комусь. 
 
+git gui 
+				graphic user interfase for git (commiting merging pulling)
+gitk
+				graphic user interfase for git branches
+
 Примітки:
 
 зміна каталогу
 
-cd/home/someUser/someDirectory
+cd /home/someUser/someDirectory
 
 або
 
