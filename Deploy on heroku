@@ -17,3 +17,13 @@ _____CLI_______________
 8  heroku run rake db:migrate
 9  heroku run rake db:seed
 10 heroku log --tail
+
+Issue
+
+User does not have CONNECT privilege is shown in the build logs or postdeploy output.
+
+Resolution
+
+We typically see CONNECT privilege issues where applications try to create databases as part of db:setup, as the user provided does not have permission to create or drop databases.
+
+For Rails apps you should look to use db:schema:load, db:structure:load or db:migrate instead of db:setup.

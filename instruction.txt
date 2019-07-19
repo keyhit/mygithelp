@@ -276,3 +276,13 @@ git tag -d v1.4-lw
 Deleted tag 'v1.4-lw' (was e7d5add)
 --------------------------------------
 
+ git pull -r 
+							get from remote branch to local and merge
+							!!! BEFORE EXECUTION BACKUP ALL CHANGED LOCAL FILES
+
+ git stash 
+						execute when changes not commited before switcing 
+						to another branch or pulling from remote branch to local one
+
+ git stash pop
+								when unstash
